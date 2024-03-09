@@ -34,6 +34,12 @@
             cargoLock.lockFile = ./Cargo.lock;
           };
 
+          packages.ini-merger = pkgs.rustPlatform.buildRustPackage {
+            inherit (cargoToml.package) name version;
+            src = ./.;
+            cargoLock.lockFile = ./Cargo.lock;
+          };
+
           # Rust dev environment
           devShells.default = pkgs.mkShell {
             inputsFrom = [
