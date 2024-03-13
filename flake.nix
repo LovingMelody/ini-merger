@@ -49,8 +49,8 @@
               # For rust-analyzer 'hover' tooltips to work.
               export RUST_SRC_PATH=${pkgs.rustPlatform.rustLibSrc}
             '';
-            buildInputs = nonRustDeps;
-            nativeBuildInputs = with pkgs; [
+            buildInputs = nonRustDeps ++ [ pkgs.cargo-audit ];
+            nativeBuildInputs = [
               rust-toolchain
             ];
             RUST_BACKTRACE = 1;
