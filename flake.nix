@@ -16,7 +16,7 @@
       imports = [
         inputs.treefmt-nix.flakeModule
       ];
-      perSystem = { config, self', pkgs, lib, system, ... }:
+      perSystem = { config, pkgs, ... }:
         let
           cargoToml = builtins.fromTOML (builtins.readFile ./Cargo.toml);
           nonRustDeps = [
@@ -33,12 +33,14 @@
             inherit (cargoToml.package) name version;
             src = ./.;
             cargoLock.lockFile = ./Cargo.lock;
+            meta.mainProgram = "ini-merger";
           };
 
           packages.ini-merger = pkgs.rustPlatform.buildRustPackage {
             inherit (cargoToml.package) name version;
             src = ./.;
             cargoLock.lockFile = ./Cargo.lock;
+            meta.mainProgram = "ini-merger";
           };
 
           # Rust dev environment
