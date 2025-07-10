@@ -17,6 +17,8 @@ struct Args {
 const PARSE_OPTION: ini::ParseOption = ini::ParseOption {
     enabled_quote: true,
     enabled_escape: false,
+    enabled_preserve_key_leading_whitespace: false,
+    enabled_indented_mutiline_value: true,
 };
 
 fn main() {
